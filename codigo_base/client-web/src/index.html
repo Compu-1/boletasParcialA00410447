@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva de Boletas - Icesi Live</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #app {
+            display: grid;
+            grid-template-columns: repeat(10, 60px);
+            gap: 6px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .seat {
+            width: 60px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 11px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            padding: 2px;
+        }
+
+        /* Colores por ZONA (borde) */
+        .seat--vip { border: 2px solid gold; }
+        .seat--platea { border: 2px solid silver; }
+        .seat--general { border: 2px solid #cd7f32; }
+
+        /* Colores por ESTADO (fondo) */
+        .seat--available { background: #2ecc71; color: #000; }
+        .seat--locked { background: #f39c12; color: #000; cursor: not-allowed; }
+        .seat--booked { background: #7f8c8d; color: #ddd; cursor: not-allowed; }
+
+        #checkout-bar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #checkout-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        #checkout-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        /* Modal */
+        #checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #checkout-modal-content {
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            width: 320px;
+        }
+
+        #checkout-modal-content input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        #checkout-modal-content button {
+            padding: 8px 16px;
+            margin-top: 10px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #checkout-confirm-btn { background: #2ecc71; }
+        #checkout-cancel-btn { background: #e74c3c; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Concierto Icesi Live Rock & Pop 2026</h1>
+
+    <div id="app"><!-- aquí se inyectan las 90 sillas --></div>
+
+    <div id="checkout-bar">
+        <button id="checkout-btn" disabled>Confirmar compra (0 silla(s))</button>
+    </div>
+
+    <div id="checkout-modal">
+        <div id="checkout-modal-content">
+            <h3>Confirmar reserva</h3>
+            <input type="text" id="customer-name" placeholder="Nombre completo">
+            <input type="email" id="customer-email" placeholder="Correo electrónico">
+            <div>
+                <button id="checkout-confirm-btn">Confirmar</button>
+                <button id="checkout-cancel-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

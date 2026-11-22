@@ -1,0 +1,23 @@
+{
+  "name": "client-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.8",
+    "webpack": "^5.113.0",
+    "webpack-cli": "^7.3.1",
+    "webpack-dev-server": "^6.1.0"
+  },
+  "dependencies": {
+    "ice": "^3.7.110"
+  }
+}
